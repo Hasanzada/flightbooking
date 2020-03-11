@@ -26,7 +26,7 @@ public class DAOAbstractFileBean<A extends Identifiable> implements DAO<A> {
     } catch (ClassNotFoundException ex) {
       throw new RuntimeException("Deserialization error. Didn't you forget to include 'serialVersionUID field' in your entity?", ex);
     } catch (FileNotFoundException ex) {
-      generateFile();
+      write((Collection<A>) Utils.getFlights());
       return getAll();
     } catch (IOException ex) {
       throw new RuntimeException("Something went wrong", ex);
@@ -63,14 +63,6 @@ public class DAOAbstractFileBean<A extends Identifiable> implements DAO<A> {
       throw new RuntimeException("DAO:write:IOException", ex);
     }
   }
-
-  public void generateFile() {
-      try {
-        write((Collection<A>) Utils.getFlights());
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
 
 
 }
