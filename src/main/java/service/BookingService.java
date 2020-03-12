@@ -6,6 +6,7 @@ import dao.DAOAbstractFileBin;
 import entity.Booking;
 import entity.Flight;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
@@ -13,9 +14,12 @@ import java.util.function.Predicate;
 public class BookingService {
     private final DAO<Booking> dao = new DAOAbstractFileBin("bookings.bin");
 
+    File file = new File("bookings.bin");
     public Collection<Booking> getBookings(){
         return dao.getAll();
     }
+
+
 
     public Booking getBooking(int id){
         return dao.get(id).get();

@@ -11,23 +11,23 @@ public class BookingCommand {
 
     public static void searchFlight() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("city");
+        System.out.println("enter city");
         String city = sc.nextLine();
-        System.out.println("date");
+        System.out.println("enter date");
         String sdate = sc.nextLine();
-        System.out.println("ticket");
+        System.out.println("ticket count");
         int ticket_count = sc.nextInt();
         Menu.showSearchedFlight(city, sdate);
         Menu.showBookingYesNo();
-        int s = sc.nextInt();
-        //System.out.println(orderBooking(s,ticket_count));
-        if(orderBooking(s,ticket_count) != null){
-            BookingController bookingController = new BookingController();
-            bookingController.addBooking(orderBooking(s,ticket_count) );
-            Commands.commands();
-        }else {
-            Commands.commands();
+
+        if(sc.hasNextLine()){
+            Booking booking = orderBooking(sc.nextInt(),ticket_count);
+            if(booking != null){
+                BookingController bookingController = new BookingController();
+                bookingController.addBooking(booking);
+            }
         }
+        Commands.commands();
     }
 
     public static Booking orderBooking(int k, int ticket_count) {

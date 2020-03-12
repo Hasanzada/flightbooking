@@ -14,6 +14,11 @@ public class BookingController {
         return bookingService.getBookings();
     }
 
+    public Collection<Booking> getAllBookingBy(){
+        return bookingService.getBookings();
+    }
+
+
     public Booking getBook(int id){
         return bookingService.getBooking(id);
     }

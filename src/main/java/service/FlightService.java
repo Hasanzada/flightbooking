@@ -6,7 +6,7 @@ import entity.Flight;
 import utils.Utils;
 
 
-import java.time.LocalDateTime;
+import java.io.File;
 import java.util.Collection;
 
 import java.util.List;
@@ -17,8 +17,11 @@ public class FlightService {
     private final DAO<Flight> dao = new DAOAbstractFileBin("flights.bin");
 
     public  void generateFile(){
-        for (int i = 1; i <= 30; i++) {
-            dao.create(Utils.getFlights(i));
+        File file = new File("flights.bin");
+        if(!file.exists()) {
+            for (int i = 1; i <= 30; i++) {
+                dao.create(Utils.getFlights(i));
+            }
         }
     }
 

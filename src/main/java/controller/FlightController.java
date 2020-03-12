@@ -23,7 +23,7 @@ public class FlightController {
     }
 
     public Collection<Flight>flightsByCityAndDate(String city, String date){
-        return flightService.flightsByCityAndDate(city, date);
+        return flightService.flightsByCityAndDate(city.toUpperCase(), date);
     }
 
 
