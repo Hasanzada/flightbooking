@@ -27,4 +27,8 @@ public class BookingController {
         bookingService.create(booking);
     }
 
+    public void deleteBooking(int id){
+        bookingService.delete(id);
+    }
+
 }

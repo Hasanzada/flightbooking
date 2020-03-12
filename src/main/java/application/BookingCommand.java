@@ -26,13 +26,16 @@ public class BookingCommand {
                 BookingController bookingController = new BookingController();
                 bookingController.addBooking(booking);
             }
+        }else{
+            Menu.showBookingAccepted();
+            System.out.println("-----------------");
+            Menu.showMenu();
         }
-        Commands.commands();
     }
 
+    static int booking_id;
     public static Booking orderBooking(int k, int ticket_count) {
-
-        int count = 0;
+        int p_id = 1;
         if (k == 1) {
             System.out.println("Enter flight id");
             Scanner sc = new Scanner(System.in);
@@ -44,9 +47,9 @@ public class BookingCommand {
                 String name = sc.nextLine();
                 System.out.println("enter passenger surname ");
                 String surname = sc.nextLine();
-                passengers.add( new Passenger(++count,name,surname));
+                passengers.add( new Passenger(p_id++,name,surname));
             }
-            return  new Booking(1,passengers,flight_id);
+            return  new Booking(++booking_id,passengers,flight_id);
 
         } else {
             Menu.showMenu();

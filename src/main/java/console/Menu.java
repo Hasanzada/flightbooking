@@ -63,7 +63,7 @@ public class Menu {
     public static void showSelectedFlights(){
         StringBuilder builder = new StringBuilder();
         builder.append("=========================\n");
-        builder.append("|      your flights     |\n");
+        builder.append("|      your bookings     |\n");
         builder.append("=========================\n");
         System.out.println(builder.toString());
     }
@@ -73,6 +73,15 @@ public class Menu {
         builder.append("=========================\n");
         builder.append("|    1.Booking           |\n");
         builder.append("|    2.Return Main menu  |\n");
+        builder.append("=========================\n");
+        System.out.println(builder.toString());
+    }
+
+
+    public static void showBookingAccepted() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("=========================\n");
+        builder.append("| your booking registred |\n");
         builder.append("=========================\n");
         System.out.println(builder.toString());
     }
