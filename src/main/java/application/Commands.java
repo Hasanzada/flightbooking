@@ -1,6 +1,7 @@
 package application;
 
 import console.Menu;
+import controller.FlightController;
 
 import java.util.Scanner;
 
@@ -9,6 +10,8 @@ public class Commands {
 
     public static void commands(){
        Scanner sc = new Scanner(System.in);
+       FlightController flightController = new FlightController();
+       flightController.genearate();
        boolean b = true;
         while (b) {
             int i = sc.nextInt();

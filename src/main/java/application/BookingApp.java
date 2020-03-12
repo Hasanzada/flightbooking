@@ -9,8 +9,7 @@ public class BookingApp {
     public static void main(String[] args) {
         //main
         Menu.showMenu();
-        FlightController flightController = new FlightController();
-        flightController.genearate();
+
         Controller controller = new Controller();
         controller.controlApp();
 

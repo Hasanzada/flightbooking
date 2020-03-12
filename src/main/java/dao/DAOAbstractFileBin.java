@@ -24,7 +24,7 @@ public class DAOAbstractFileBin<A extends Identifiable> implements DAO<A> {
     } catch (ClassNotFoundException ex) {
       throw new RuntimeException("Deserialization error. Didn't you forget to include 'serialVersionUID field' in your entity?", ex);
     } catch (FileNotFoundException ex) {
-      ex.printStackTrace();
+      ///ex.printStackTrace();
       //write((Collection<A>) Utils.getFlights());
       return new ArrayList<>();
     } catch (IOException ex) {
