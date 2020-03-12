@@ -14,7 +14,7 @@ import java.util.function.Predicate;
 public class BookingService {
     private final DAO<Booking> dao = new DAOAbstractFileBin("bookings.bin");
 
-    File file = new File("bookings.bin");
+
     public Collection<Booking> getBookings(){
         return dao.getAll();
     }
