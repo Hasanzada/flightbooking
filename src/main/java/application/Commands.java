@@ -21,15 +21,15 @@ public class Commands {
                     Menu.showMenu();
                     break;
                 case 3:
-                    Menu.showSerchedBooking();
-                    Menu.showSearchedFlight(sc.nextInt());
+                    BookingCommand.searchFlight();
+
                     break;
                 case 4:
 
                     break;
                 case 5:
-                    Menu.showSelectedFlights();
-                    //Menu.showBookings();
+                    //Menu.showSelectedFlights();
+                    Menu.showBookings();
 
                     break;
                 case 6:

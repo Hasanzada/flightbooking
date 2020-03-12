@@ -3,17 +3,28 @@ package controller;
 import entity.Flight;
 import service.FlightService;
 
+
+import java.time.LocalDateTime;
 import java.util.Collection;
+
+
 
 
 public class FlightController {
 
     private FlightService flightService = new FlightService();
 
+    public void genearate(){
+        flightService.generateFile();
+    }
+
     public Collection<Flight> getAllFlight(){
         return flightService.getFlights();
     }
 
+    public Collection<Flight>flightsByCityAndDate(String city, String date){
+        return flightService.flightsByCityAndDate(city, date);
+    }
 
 
     public Flight getFlight(int id){

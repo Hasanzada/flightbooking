@@ -1,29 +1,37 @@
 package service;
 
 import dao.DAO;
-import dao.DAOAbstractFileBean;
+import dao.DAOAbstractFileBin;
 import entity.Flight;
 import utils.Utils;
 
+
+import java.time.LocalDateTime;
 import java.util.Collection;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public class FlightService {
 
-    private final DAO<Flight> dao = new DAOAbstractFileBean("flight.bin");
+    private final DAO<Flight> dao = new DAOAbstractFileBin("flights.bin");
+
+    public  void generateFile(){
+        for (int i = 1; i <= 30; i++) {
+            dao.create(Utils.getFlights(i));
+        }
+    }
 
     public Collection<Flight> getFlights(){
-        if(dao.getAll() == null){
-
-        }
             return dao.getAll();
     }
 
     public Flight getFlight(int id){
         return dao.get(id).get();
+    }
+
+    public Collection<Flight>flightsByCityAndDate(String city, String date){
+        return dao.getAllBy(p -> (p.getCity().equals(city) && p.getDate().equals(date)));
     }
 
     public void create(Flight flight){

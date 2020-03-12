@@ -2,9 +2,12 @@ package console;
 
 import controller.BookingController;
 import controller.FlightController;
+import entity.Booking;
 import entity.Flight;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 public class Menu {
     static FlightController flightController = new FlightController();
@@ -30,9 +33,9 @@ public class Menu {
         all.forEach(p -> System.out.println(p));
     }
 
-    public static void showSearchedFlight(int id){
+    public static void showSearchedFlight( String city, String date){
         Menu.showSelectedBooking();
-        System.out.println(flightController.getFlight(id));
+        System.out.println(flightController.flightsByCityAndDate(city,date));
         //bookingController.addBooking(flightController.getFlight(id));
     }
 
@@ -52,15 +55,24 @@ public class Menu {
         System.out.println(builder.toString());
     }
 
-   /* public static void showBookings(){
-        Collection<Flight> all = bookingController.getAllBooking();
+    public static void showBookings(){
+        Collection<Booking> all = bookingController.getAllBooking();
         all.forEach(p -> System.out.println(p));
-    }*/
+    }
 
     public static void showSelectedFlights(){
         StringBuilder builder = new StringBuilder();
         builder.append("=========================\n");
         builder.append("|      your flights     |\n");
+        builder.append("=========================\n");
+        System.out.println(builder.toString());
+    }
+
+    public static void showBookingYesNo(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("=========================\n");
+        builder.append("|    1.Booking           |\n");
+        builder.append("|    2.Return Main menu  |\n");
         builder.append("=========================\n");
         System.out.println(builder.toString());
     }

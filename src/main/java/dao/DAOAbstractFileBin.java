@@ -1,19 +1,17 @@
 package dao;
 
-import entity.Flight;
 import entity.Identifiable;
 import utils.Utils;
-
 import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class DAOAbstractFileBean<A extends Identifiable> implements DAO<A> {
+public class DAOAbstractFileBin<A extends Identifiable> implements DAO<A> {
 
   private File file;
 
-  public DAOAbstractFileBean(String filename){
+  public DAOAbstractFileBin(String filename){
     file = new File(filename);
   }
 
@@ -26,8 +24,9 @@ public class DAOAbstractFileBean<A extends Identifiable> implements DAO<A> {
     } catch (ClassNotFoundException ex) {
       throw new RuntimeException("Deserialization error. Didn't you forget to include 'serialVersionUID field' in your entity?", ex);
     } catch (FileNotFoundException ex) {
-      write((Collection<A>) Utils.getFlights());
-      return getAll();
+      ex.printStackTrace();
+      //write((Collection<A>) Utils.getFlights());
+      return new ArrayList<>();
     } catch (IOException ex) {
       throw new RuntimeException("Something went wrong", ex);
     }
@@ -60,6 +59,7 @@ public class DAOAbstractFileBean<A extends Identifiable> implements DAO<A> {
     try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
         oos.writeObject(as);
     }  catch (IOException ex) {
+      ex.printStackTrace();
       throw new RuntimeException("DAO:write:IOException", ex);
     }
   }
