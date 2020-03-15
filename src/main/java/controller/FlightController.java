@@ -1,33 +1,41 @@
 package controller;
 
 import entity.Flight;
-import service.FlightService;
+import service.Service;
+import service.ServiceAbstract;
+import utils.Utils;
 
-
-import java.time.LocalDateTime;
+import java.io.File;
 import java.util.Collection;
-
-
 
 
 public class FlightController {
 
-    private FlightService flightService = new FlightService();
+
+    Service<Flight> service = new ServiceAbstract<>("flights.bin");
+    public  void generateFile(){
+        File file = new File("flights.bin");
+        if(!file.exists()) {
+            for (int i = 1; i <= 30; i++) {
+                service.create(Utils.getFlights(i));
+            }
+        }
+    }
+
 
     public void genearate(){
-        flightService.generateFile();
+        generateFile();
     }
 
     public Collection<Flight> getAllFlight(){
-        return flightService.getFlights();
+        return service.getAll();
     }
 
-    public Collection<Flight>flightsByCityAndDate(String city, String date){
-        return flightService.flightsByCityAndDate(city.toUpperCase(), date);
+    public Collection<Flight> flightsByCityAndDate(String city, String date){
+        return service.getAllBy(p -> (p.getCity().equals(city) && p.getDate().equals(date)));
     }
-
 
     public Flight getFlight(int id){
-        return flightService.getFlight(id);
+        return service.get(id);
     }
 }

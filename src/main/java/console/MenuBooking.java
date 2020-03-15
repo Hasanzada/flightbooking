@@ -5,16 +5,15 @@ import controller.FlightController;
 import entity.Booking;
 import entity.Flight;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
-public class Menu {
+public class MenuBooking {
     static FlightController flightController = new FlightController();
     static BookingController bookingController = new BookingController();
 
+    private static final StringBuilder builder = new StringBuilder();
     public static void showMenu(){
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append(" =============================\n");
         builder.append("|         Booking App         |\n");
         builder.append(" =============================\n");
@@ -33,14 +32,14 @@ public class Menu {
         all.forEach(p -> System.out.println(p));
     }
 
-    public static void showSearchedFlight( String city, String date){
-        Menu.showSelectedBooking();
+    public static void showSearchedFlight(String city, String date){
+        MenuBooking.showSelectedBooking();
         System.out.println(flightController.flightsByCityAndDate(city,date));
         //bookingController.addBooking(flightController.getFlight(id));
     }
 
     public static void showSerchedBooking(){
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append("=========================\n");
         builder.append("| select your flight     |\n");
         builder.append("=========================\n");
@@ -48,20 +47,20 @@ public class Menu {
     }
 
     public static void showSelectedBooking(){
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append("=========================\n");
         builder.append("|      your flight       |\n");
         builder.append("=========================\n");
         System.out.println(builder.toString());
     }
 
-    public static void showBookings(){
-        Collection<Booking> all = bookingController.getAllBooking();
+    public static void showBookings(long user_id){
+        Collection<Booking> all = bookingController.getAllBookingBy(user_id);
         all.forEach(p -> System.out.println(p));
     }
 
     public static void showSelectedFlights(){
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append("=========================\n");
         builder.append("|      your bookings     |\n");
         builder.append("=========================\n");
@@ -69,7 +68,7 @@ public class Menu {
     }
 
     public static void showBookingYesNo(){
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append("=========================\n");
         builder.append("|    1.Booking           |\n");
         builder.append("|    2.Return Main menu  |\n");
@@ -79,7 +78,7 @@ public class Menu {
 
 
     public static void showBookingAccepted() {
-        StringBuilder builder = new StringBuilder();
+        builder.delete(0,builder.length());
         builder.append("=========================\n");
         builder.append("| your booking registred |\n");
         builder.append("=========================\n");

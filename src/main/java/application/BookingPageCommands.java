@@ -1,32 +1,31 @@
 package application;
 
-import console.Menu;
+import console.MenuBooking;
 import controller.BookingController;
 import controller.FlightController;
 
 import java.util.Scanner;
 
 
-public class Commands {
+public class BookingPageCommands {
 
-    private static FlightController flightController = new FlightController();
-    private static BookingController bookingController = new BookingController();
-
-    public static void commands(){
-       Scanner sc = new Scanner(System.in);
+    private static final FlightController flightController = new FlightController();
+    private static final BookingController bookingController = new BookingController();
+    private static final Scanner sc = new Scanner(System.in);
+    public static void commands(long user_id){
+       MenuBooking.showMenu();
        flightController.genearate();
        boolean b = true;
         while (b) {
             int i = sc.nextInt();
             switch (i) {
                 case 1:
-                    Menu.showMenu();
                     break;
                 case 2:
-                    Menu.showFlights();
+                    MenuBooking.showFlights();
                     break;
                 case 3:
-                    BookingCommand.searchFlight();
+                    BookingCommand.searchFlight(user_id);
                     break;
                 case 4:
                     System.out.println("select id which you want to delete");
@@ -34,17 +33,18 @@ public class Commands {
                     bookingController.deleteBooking(id);
                     break;
                 case 5:
-                    Menu.showSelectedFlights();
-                    Menu.showBookings();
+                    MenuBooking.showSelectedFlights();
+                    MenuBooking.showBookings(user_id);
                     break;
                 case 6:
                     b = false;
+                    break;
                 default:
                     System.out.println("choose 1-6");
                     break;
             }
-            Menu.showMenu();
-            sc = new Scanner(System.in);
+            if(b)
+                MenuBooking.showMenu();
         }
 
     }

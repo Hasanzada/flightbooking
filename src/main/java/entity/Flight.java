@@ -1,10 +1,9 @@
 package entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 
-public class Flight implements Serializable,Identifiable {
+public class Flight implements Serializable, Identifiable {
 
     final int id;
     final String country;

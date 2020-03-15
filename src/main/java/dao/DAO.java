@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public interface DAO<A> {
     Collection<A> getAll();
     Collection<A> getAllBy(Predicate<A> p);
-    Optional<A> get(int id);
+    Optional<A> get(long id);
     void create(A data);
-    void delete(int id);
+    void delete(long id);
 }

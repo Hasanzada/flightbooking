@@ -1,9 +1,12 @@
 package dao;
 
 import entity.Identifiable;
-import utils.Utils;
+
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -36,7 +39,7 @@ public class DAOAbstractFileBin<A extends Identifiable> implements DAO<A> {
   }
 
   @Override
-  public Optional<A> get(int id) {
+  public Optional<A> get(long id) {
     return getAll().stream().filter(p -> p.getId() == id).findFirst();
   }
 
@@ -48,7 +51,7 @@ public class DAOAbstractFileBin<A extends Identifiable> implements DAO<A> {
   }
 
   @Override
-  public void delete(int id) {
+  public void delete(long id) {
     Collection<A> as = getAllBy(p -> p.getId() != id);
     write(as);
   }

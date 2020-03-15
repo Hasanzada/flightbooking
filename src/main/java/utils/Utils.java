@@ -2,11 +2,12 @@ package utils;
 
 import entity.Flight;
 
-
 import java.time.LocalDateTime;
-
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 public class Utils {
     public static String getRandomCountry(){
@@ -21,7 +22,7 @@ public class Utils {
 
     public static Flight getFlights(int id){
         Collection<Flight> flights = new ArrayList<>();
-            Flight flight = new Flight(id, getRandomCountry(),getRandomCountry(),LocalDateTime.now()
+            Flight flight = new Flight(id, getRandomCountry(),getRandomCountry(), LocalDateTime.now()
                     .plusHours((int)(Math.random()*24+1))
                     .format(DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")), generateRandomNumber());
 

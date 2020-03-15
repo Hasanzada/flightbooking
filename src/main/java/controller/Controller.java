@@ -1,13 +1,11 @@
 package controller;
 
-import application.Commands;
+import application.LogInPageCommands;
 
 public class Controller {
 
-
-
     public void controlApp(){
-        Commands.commands();
+        LogInPageCommands.commands();
     }
 
 }
